@@ -4,6 +4,7 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
+    'language' => 'ru-RU',
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
@@ -14,6 +15,10 @@ $config = [
         '@css'   => '/web/css',
     ],
     'components' => [
+        'formatter' => [
+            'dateFormat' => 'dd.MM.yyyy', 
+            'timeFormat' => 'hh:mm',           
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'S6jJ_6t7H00f6dHbVZhPPwd3nkFWDMk2',
@@ -53,6 +58,11 @@ $config = [
                 ''=>'index/index',
                 '/'=>'index/index',
                 '/admin'=>'admin/index',
+                '/news'=>'news/index',
+                '/admin/news/add-news'=>'admin/add-news',
+                '/admin/news/drop-news/<id:([0-9]+)>'=>'admin/drop-news',
+                '/admin/update-news/<id:([0-9]+)>'=>'admin/update-news',
+                '/admin/news/delete-mainimage/<id:([0-9]+)>'=>'admin/delete-mainimage',
             ],
         ],        
     ],

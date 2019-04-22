@@ -6,6 +6,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use app\assets\AppAsset;
+use app\components\Menu;
 
 AppAsset::register($this);
 ?>
@@ -49,12 +50,8 @@ AppAsset::register($this);
             <div class='content menu'>
                 <?= Html::img('@img/menu.png', ['alt'=>'Мобильное меню', 'title'=>'Мобильное меню', 'id'=>'menu']); ?>
             </div>
-            <div class='content nav'>
-                <?= Html::a('О нас', '#'); ?>
-                <?= Html::a('Условия посещения', '#'); ?>
-                <?= Html::a('Новости', '#'); ?>
-                <?= Html::a('Галерея', '#'); ?>
-                <?= Html::a('Контакты', '#'); ?>
+            <div class='content nav'>                
+                <?= Menu::widget(['page'=>Yii::$app->request->pathInfo]); ?>
             </div>
         </div>
     </header>
