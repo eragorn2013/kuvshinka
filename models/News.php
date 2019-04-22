@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use app\models\Images;
 
 /**
  * This is the model class for table "news".
@@ -19,7 +20,7 @@ class News extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
-     */
+     */   
     public static function tableName()
     {
         return 'news';
@@ -53,5 +54,10 @@ class News extends \yii\db\ActiveRecord
             'date' => 'Date',
             'active' => 'Опубликовать',
         ];
+    }
+
+    public function getImages()
+    {
+        return $this->hasMany(Images::className(), [ 'id_news' => 'id' ]);
     }
 }

@@ -35,6 +35,11 @@
 		                	<div class='admin-edit'>
 		                		<?= Html::a(Html::img('@img/edit.png', ['alt'=>'Редактировать новость', 'title'=>'Редактировать новость', 'data-id'=>$item->id, 'class'=>'edit-news']), '#'); ?>
 		                		<?= Html::a(Html::img('@img/delete.png', ['alt'=>'Удалить новость', 'title'=>'Удалить новость']), '/admin/news/drop-news/'.$item->id, ['class'=>'drop-news']); ?>
+		                		<?php if($item->active): ?>
+		                			<?= Html::tag('span', '', ['class'=>'green', 'title'=>'Новость опубликована']) ?>
+		                		<?php else: ?>
+		                			<?= Html::tag('span', '', ['class'=>'red', 'title'=>'Новость не опубликована']) ?>
+		                		<?php endif; ?>		                		
 		                	</div>
 		                <?php endif; ?>
 		            </div>
@@ -64,7 +69,7 @@
 
 						<div class='fields'>
 							<?= $form->field($item, 'head')->textInput(['placeholder'=>'Заголовок новости', 'title'=>'Заголовок новости'])->label(''); ?>
-							<?= $form->field($item, 'preview')->textarea(['placeholder'=>'Превью новости', 'title'=>'Текст новости', 'maxlength'=>"200"])->label(''); ?>
+							<?= $form->field($item, 'preview')->textarea(['placeholder'=>'Превью новости', 'title'=>'Превью новости', 'maxlength'=>"200"])->label(''); ?>
 							<?= $form->field($item, 'content')->textarea(['class'=>'content-news', 'placeholder'=>'Текст новости', 'title'=>'Текст новости'])->label(''); ?>
 							<?= $form->field($item, 'date')->textInput(['placeholder'=>'Дата добавления', 'title'=>'Дата добавления'])->label(''); ?>
 							<?php
@@ -76,6 +81,27 @@
 						</div>
 						
 					<?php ActiveForm::end(); ?>
+
+					<div class='album'>
+						<?php $f=ActiveForm::begin(['action'=>'/admin/news/add-photo/'.$item->id, 'options'=>['enctype' => 'multipart/form-data', 'class'=>'submit-form-photos']]); ?>
+							<?= $f->field($images, 'alt')->textInput(['placeholder'=>'Описание изображения'])->label(''); ?>
+							<?= $f->field($images, 'img')->fileInput()->label(''); ?>
+							<?= Html::submitButton('Добавить'); ?>
+						<?php ActiveForm::end(); ?>
+						
+						<div class='images'>
+							<?php if($item->images): ?>																	
+									<?php foreach($item->images as $img): ?>
+										<div class='item'>
+											<div class='layer'>
+												<?= Html::a(Html::img('@img/news/'.$img->id_news.'/'.$img->img), '@img/news/'.$img->id_news.'/'.$img->img, ['class'=>'img']); ?>		
+											</div>
+											<?= Html::img('@img/delete.png', ['class'=>'delete-img', 'data-id'=>$img->id]); ?>
+										</div>
+									<?php endforeach; ?>									
+							<?php endif; ?>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>		

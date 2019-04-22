@@ -46,15 +46,15 @@ class AdminController extends Controller
         $id=(int)$id;
         $news=News::findOne($id);
         if($news){
-            if($news->img){
-                $mainImg=$_SERVER['DOCUMENT_ROOT'].'/web/news/'.$news->img;
+            if($news->img){                
+                $mainImg=$_SERVER['DOCUMENT_ROOT'].'/web/img/news/'.$news->img;
                 if(file_exists($mainImg)) unlink($mainImg);
-            }
+            }            
             $images=Images::find()->where(['id_news'=>$id])->all();
             if($images){
                 foreach($images as $image){
-                    $img=$_SERVER['DOCUMENT_ROOT'].'/web/news/'.$id.'/'.$image->img;
-                    if(file_exists($img)) inlink($img);
+                    $img=$_SERVER['DOCUMENT_ROOT'].'/web/img/news/'.$id.'/'.$image->img;
+                    if(file_exists($img)) unlink($img);
                     $image->delete();
                 }
             } 
@@ -100,5 +100,53 @@ class AdminController extends Controller
         $news->img='';
         $news->update();
         return Yii::$app->response->redirect(['/news']);
+    }
+
+    public function actionAddPhotoNews($id){
+        if(!$this->admin()) return Yii::$app->response->redirect(['/news']);
+
+        $id=(int)$id;        
+        $image=new Images();
+
+        if($image->load(Yii::$app->request->post()) && $image->validate())
+        {
+            $image->img = UploadedFile::getInstance($image, 'img');           
+            if($image->img)
+            {               
+                $nameFile=$id.'-'.md5($image->img->name).'.jpg';
+                $fullPathDir=$_SERVER['DOCUMENT_ROOT'].'/web/img/news/'.$id;
+                $fullPathFile=$fullPathDir.'/'.$nameFile;
+                $relativePathFile='/web/img/news/'.$id.'/'.$nameFile;
+                if(!file_exists($fullPathDir)) FileHelper::createDirectory($fullPathDir);
+                $img=Images::findOne(['id_news'=>$id, 'img'=>$nameFile]);
+                if($img) exit(json_encode(['error'=>true, 'message'=>'Файл с таким названием уже существует']));
+                $image->img->saveAs($fullPathFile);
+                $image->img=$nameFile;
+                $image->id_news=$id;
+                $image->save();
+            }
+        }
+        exit(json_encode(['error'=>false, 'img'=>$relativePathFile]));
+    }
+
+    public function actionDeletePhotoNews(){
+        if(!$this->admin()) return Yii::$app->response->redirect(['/news']);        
+
+        if(!Yii::$app->request->isAjax) exit(json_encode(['error'=>true, 'message'=>'Запрос отправлен как-то неправильно']));
+        $id=(int)Yii::$app->request->post('id');
+        $image=Images::findOne($id);
+
+        $fullPathDir=$_SERVER['DOCUMENT_ROOT'].'/web/img/news/'.$image->id_news;
+        $fullPathFile=$fullPathDir.'/'.$image->img;        
+
+        if(file_exists($fullPathFile)) unlink($fullPathFile);
+        $image->delete();
+
+        exit(json_encode(['error'=>false]));
+    }
+
+    public function actionExit(){
+        Yii::$app->user->logout();
+         return Yii::$app->response->redirect(['/']);
     }
 }

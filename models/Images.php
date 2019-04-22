@@ -29,8 +29,10 @@ class Images extends \yii\db\ActiveRecord
     {
         return [
             [['alt'], 'string'],
+            [['alt'], 'required', 'message'=>'Поле не может быть пустым'],  
             [['id_news'], 'integer'],
             [['img'], 'string', 'max' => 256],
+            ['img', 'file', 'extensions' => ['jpg'], 'message'=>'Допустимые расширения: jpg'],
         ];
     }
 

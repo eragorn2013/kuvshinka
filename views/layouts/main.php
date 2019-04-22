@@ -7,6 +7,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use app\assets\AppAsset;
 use app\components\Menu;
+use app\components\ExitAdmin;
 
 AppAsset::register($this);
 ?>
@@ -23,8 +24,9 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-<div class="wrapper">
-    <header>
+<div class="wrapper"> 
+    <?= ExitAdmin::widget(); ?>  
+    <header>        
         <div class='container'>
             <div class='content info'>
                 <div class='item logo'>
