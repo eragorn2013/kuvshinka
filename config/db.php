@@ -3,7 +3,7 @@
 return [
     'class' => 'yii\db\Connection',
     'dsn' => 'mysql:host=server148.hosting.reg.ru;dbname=u0322852_kuvshinka',
-    'username' => 'u0322852_kuvshinka',
+    'username' => 'u0322852_kuvshin',
     'password' => '159875321Kuvshinka',
     'charset' => 'utf8',
 

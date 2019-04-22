@@ -11,6 +11,7 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
         '@img'   => '/web/img',
+        '@css'   => '/web/css',
     ],
     'components' => [
         'request' => [
@@ -51,6 +52,7 @@ $config = [
             'rules' => [
                 ''=>'index/index',
                 '/'=>'index/index',
+                '/admin'=>'admin/index',
             ],
         ],        
     ],
