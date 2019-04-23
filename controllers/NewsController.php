@@ -20,13 +20,20 @@ class NewsController extends Controller
     	}
     	else{
     		$news=News::find()->where(['active'=>1])->orderBy('id DESC')->with('images')->all();
-    	}   
-    	//return $this->out($news); 	
+    	}    	
     	$images=new Images();  	
         return $this->render('news', [ 
         	'images'=>$images,       	
         	'news'=>$news,
         	'admin'=>$this->admin(),
+        ]);
+    }
+    public function actionNewsCurrent($id){
+        $id=(int)$id;
+        $news=News::find()->where(['id'=>$id, 'active'=>1])->with('images')->one();
+        if(!$news) return Yii::$app->response->redirect(['/news']);        
+        return $this->render('news_current', [
+            'news'=>$news,
         ]);
     }   
 }

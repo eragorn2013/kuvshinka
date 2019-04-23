@@ -13,6 +13,7 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
         '@img'   => '/web/img',
         '@css'   => '/web/css',
+        '@js'   => '/web/js',
     ],
     'components' => [
         'formatter' => [
@@ -59,6 +60,7 @@ $config = [
                 '/'=>'index/index',
                 '/admin'=>'admin/index',
                 '/news'=>'news/index',
+                '/news/<id:([0-9]+)>'=>'news/news-current',
                 '/admin/news/add-news'=>'admin/add-news',
                 '/admin/news/drop-news/<id:([0-9]+)>'=>'admin/drop-news',
                 '/admin/update-news/<id:([0-9]+)>'=>'admin/update-news',
