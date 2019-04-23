@@ -10,6 +10,7 @@ use app\models\User;
 use app\components\Behaviors;
 use app\models\News;
 use app\models\Images;
+use app\models\Gallery;
 
 class AdminController extends Controller
 {
@@ -148,5 +149,45 @@ class AdminController extends Controller
     public function actionExit(){
         Yii::$app->user->logout();
          return Yii::$app->response->redirect(['/']);
+    }
+
+    public function actionAddImage(){
+        if(!$this->admin()) return Yii::$app->response->redirect(['/gallery']);
+
+        $gallery=new Gallery();
+
+        if($gallery->load(Yii::$app->request->post()) && $gallery->validate())
+        {           
+            $gallery->name = UploadedFile::getInstance($gallery, 'name');           
+            if($gallery->name)
+            {               
+                $nameFile=md5($gallery->name).'.jpg';
+                $fullPathDir=$_SERVER['DOCUMENT_ROOT'].'/web/img/gallery';
+                $fullPathFile=$fullPathDir.'/'.$nameFile;                
+                $img=Gallery::findOne(['name'=>$nameFile]);
+                if($img){
+                    Yii::$app->session->setFlash('message', 'Файл с таким именем уже существует');
+                    return Yii::$app->response->redirect(['/gallery']);
+                }
+                $gallery->name->saveAs($fullPathFile);
+                $gallery->name=$nameFile;               
+                $gallery->save();
+            }
+        }
+        return Yii::$app->response->redirect(['/gallery']);
+    }
+    public function actionDeleteImage($id){
+        if(!$this->admin()) return Yii::$app->response->redirect(['/gallery']);
+        $id=(int)$id;
+        $image=Gallery::findOne($id);
+
+        $fullPathDir=$_SERVER['DOCUMENT_ROOT'].'/web/img/gallery';
+        $fullPathFile=$fullPathDir.'/'.$image->name;
+
+        if(file_exists($fullPathFile)) unlink($fullPathFile);
+
+        $image->delete();
+
+        return Yii::$app->response->redirect(['/gallery']);
     }
 }

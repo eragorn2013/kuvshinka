@@ -67,6 +67,8 @@ $config = [
                 '/admin/news/delete-mainimage/<id:([0-9]+)>'=>'admin/delete-mainimage',
                 '/admin/news/add-photo/<id:([0-9]+)>'=>'admin/add-photo-news',
                 '/admin/news/delete-photo-news'=>'admin/delete-photo-news',
+                '/admin/gallery/add-img'=>'admin/add-image',
+                '/admin/gallery/delete-image/<id:([0-9]+)>'=>'admin/delete-image',
                 '/admin/exit'=>'admin/exit',
             ],
         ],        

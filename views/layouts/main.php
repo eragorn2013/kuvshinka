@@ -70,7 +70,7 @@ AppAsset::register($this);
                     <?= Html::a('О нас', '#'); ?>
                     <?= Html::a('Условия посещения', '#'); ?>
                     <?= Html::a('Новости', '/news'); ?>
-                    <?= Html::a('Галерея', '#'); ?>
+                    <?= Html::a('Галерея', '/gallery'); ?>
                     <?= Html::a('Контакты', '#'); ?>
                 </div>
                 <div class='item contacts'>

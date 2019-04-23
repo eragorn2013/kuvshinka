@@ -62,5 +62,5 @@ $(document).ready(function(){
 			el.parent('.item').remove();
 		});
 		return false;
-	});
+	});	
 });

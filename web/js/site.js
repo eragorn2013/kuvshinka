@@ -13,6 +13,7 @@ $(document).ready(function(){
 		}
 	});	
 	$('.owl-carousel-5').lightGallery();
+  $('.gallery').lightGallery();
 	var owl5=$(".owl-carousel-5");  
     owl5.owlCarousel({                      
         margin:0,

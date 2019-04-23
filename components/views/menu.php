@@ -11,5 +11,10 @@
 	<?= Html::a('Новости', '/news'); ?>
 <?php endif; ?>
 
-<?= Html::a('Галерея', '#'); ?>
+<?php if($page=='gallery'): ?>
+	<?= Html::a('Галерея', '/gallery', ['class'=>'active']); ?>
+<?php else: ?>
+	<?= Html::a('Галерея', '/gallery'); ?>
+<?php endif; ?>
+
 <?= Html::a('Контакты', '#'); ?>
