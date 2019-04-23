@@ -23,7 +23,7 @@
 		                	<?php endif; ?>		                   
 		                </div>
 		                <div class='head'>
-		                    <?= Html::a($item->head, Url::toRoute(['/news/'.$item->id])); ?>
+		                    <?= Html::a(mb_strimwidth($item->head, 0, 41, '...'), Url::toRoute(['/news/'.$item->id])); ?>
 		                </div>
 		                <div class='preview'>
 		                    <?= $item->preview; ?>

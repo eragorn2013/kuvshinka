@@ -44,59 +44,36 @@
         </div>
     </div>
 </section>
+<?php if($news): ?>
 <section id='news'>
     <?= Html::tag('h2', 'Последние новости'); ?>
     <div class='container'>
         <div class='content'>
 
-            <div class='item'>
-                <div class='img'>
-                    <?= Html::img('@img/news/1.jpg', ['alt'=>'Юные кулинары приготовили печенье']); ?>
+            <?php foreach($news as $item): ?>
+                <div class='item'>                    
+                    <div class='img'>
+                        <?php if($item->img): ?>
+                            <?= Html::img('@img/news/'.$item->img, ['alt'=>$item->head, 'title'=>$item->head]); ?>
+                        <?php else: ?>
+                            <?= Html::img('@img/noimg.jpg', ['alt'=>$item->head, 'title'=>$item->head]); ?>
+                        <?php endif; ?>
+                    </div>
+                    <div class='head'>
+                        <?= Html::a(mb_strimwidth($item->head, 0, 41, '...'), '/news/'.$item->id); ?>
+                    </div>
+                    <div class='preview'>
+                        <?= $item->preview ?>
+                    </div>
+                    <div class='date'>
+                        <?= Yii::$app->formatter->asDate($item->date); ?>
+                    </div>
                 </div>
-                <div class='head'>
-                    <?= Html::a('Юные кулинары приготовили печение', '#'); ?>
-                </div>
-                <div class='preview'>
-                    Ребята "Кувшинки" сегодня почувствовали себя настоящими кондитерами:  у нас в клубе состоялся полезный и творческий кулинарный мастер-класс.
-                </div>
-                <div class='date'>
-                    21.04.2019
-                </div>
-            </div>
-
-            <div class='item'>
-                <div class='img'>
-                    <?= Html::img('@img/news/1.jpg', ['alt'=>'Юные кулинары приготовили печенье']); ?>
-                </div>
-                <div class='head'>
-                    <?= Html::a('Юные кулинары приготовили печение', '#'); ?>
-                </div>
-                <div class='preview'>
-                    Ребята "Кувшинки" сегодня почувствовали себя настоящими кондитерами:  у нас в клубе состоялся полезный и творческий кулинарный мастер-класс.
-                </div>
-                <div class='date'>
-                    21.04.2019
-                </div>
-            </div>
-
-            <div class='item'>
-                <div class='img'>
-                    <?= Html::img('@img/news/1.jpg', ['alt'=>'Юные кулинары приготовили печенье']); ?>
-                </div>
-                <div class='head'>
-                    <?= Html::a('Юные кулинары приготовили печение', '#'); ?>
-                </div>
-                <div class='preview'>
-                    Ребята "Кувшинки" сегодня почувствовали себя настоящими кондитерами:  у нас в клубе состоялся полезный и творческий кулинарный мастер-класс.
-                </div>
-                <div class='date'>
-                    21.04.2019
-                </div>
-            </div>
-
+            <?php endforeach; ?>       
         </div>
     </div>
 </section>
+<?php endif; ?>
 <section id='map'>
     <?= Html::tag('h2', 'Мы находимся'); ?>
     <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aac180fddbd66b8e2e0cbfa617b62edc8791dcf9317893aa0964a411dc237dcc7&amp;source=constructor" width="100%" frameborder="0"></iframe>

@@ -14,7 +14,9 @@
 		<div class='content'>
 			<?= Html::tag('h1', $news->head) ?>
 			<div class='date'><?= Yii::$app->formatter->asDate($news->date); ?></div>
-			<?= Html::img('@img/news/'.$news->img, ['alt'=>$news->head, 'title'=>$news->head, 'class'=>'main-img']); ?>
+			<?php if($news->img): ?>
+				<?= Html::img('@img/news/'.$news->img, ['alt'=>$news->head, 'title'=>$news->head, 'class'=>'main-img']); ?>
+			<?php endif; ?>
 			<div class='text'>
 				<?= $news->content; ?>
 			</div>
