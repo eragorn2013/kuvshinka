@@ -41,7 +41,9 @@ AppAsset::register($this);
                     </div>
                     <div class='item social'>
                         <div class='point question'>
-                            <?= Html::a('Задать вопрос', '#', ['id'=>'open-form']); ?>
+                            <?php if(Yii::$app->request->pathInfo != 'contacts'): ?>
+                                <?= Html::a('Задать вопрос', '#', ['id'=>'open-form']); ?>
+                            <?php endif; ?>
                         </div>
                         <div class='point links'>
                             <?= Html::a(Html::img('@img/inst-color.png', ['alt'=>'Ссылка на социальную сеть Инстаграм', 'title'=>'Ссылка на социальную сеть инстаграм']), 'https://www.instagram.com/kuvshinkaclub/', ['target'=>'_blank']); ?>
@@ -88,7 +90,9 @@ AppAsset::register($this);
             </div>
         </div>
     </footer> 
-    <?= Form::widget(); ?>   
+    <?php if(Yii::$app->request->pathInfo != 'contacts'): ?>
+        <?= Form::widget(); ?>  
+    <?php endif; ?> 
 </div>
 <?php $this->endBody() ?>
 </body>

@@ -21,6 +21,7 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'js/kladr/jquery.kladr.min.css',
         'js/lightgallery/dist/css/lightgallery.css',
         'js/owlcarousel/docs/assets/owlcarousel/assets/owl.carousel.css',
         'js/owlcarousel/docs/assets/owlcarousel/assets/owl.theme.green.css',
@@ -29,6 +30,7 @@ class AppAsset extends AssetBundle
         'js/lightgallery/dist/js/lightgallery.min.js',
         'js/owlcarousel/docs/assets/owlcarousel/owl.carousel.min.js',
         'js/phone/jquery.mask.min.js',
+        'js/kladr/jquery.kladr.min.js',
         'js/site.js',
         'js/admin.js',
     ];

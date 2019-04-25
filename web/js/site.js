@@ -44,17 +44,21 @@ $(document).ready(function(){
     $("#orders-phone").mask("+7(000)000-00-00", {
         placeholder: "Номер телефона",
         clearIfNotMatch: true
+    });    
+
+    $('#orders-city').kladr({
+        type: $.kladr.type.city
     });
 
     $('#open-form').on('click', function(){
-      $('#modal-form').fadeToggle(200);
+      $('#modal-form').stop().fadeToggle(200);
       return false;
     });
     $('#modal-form .content').on('click', function(e){
       e.stopPropagation();
     });
     $('#modal-form, #modal-form .close-modal').on('click', function(e){
-      $('#modal-form').fadeToggle(200);
+      $('#modal-form').stop().fadeToggle(200);
     });
 
 });
