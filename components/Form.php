@@ -9,7 +9,7 @@ use app\models\Orders;
 class Form extends Widget
 {	
     public function run(){ 
-    	$orderForm=new Orders;   	
+    	$orderForm=new Orders(['scenario'=>Orders::SCENARIO_POPUP]);   	
     	return $this->render('form', ['orderForm'=>$orderForm]);
     }
 }

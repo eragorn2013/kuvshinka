@@ -15,7 +15,7 @@ class ContactsController extends Controller
     }   
     public function actionIndex()
     {   
-    	$order=new Orders; 	
+    	$order=new Orders(['scenario'=>Orders::SCENARIO_CONTACTS]); 	
         $seoData=Seo::findOne(6);
         return $this->render('contacts', [ 
             'seoData'=>$seoData,       	

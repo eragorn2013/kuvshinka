@@ -195,7 +195,7 @@ class AdminController extends Controller
     }
 
     public function actionSendOrder(){
-        $order=new Orders();
+        $order=new Orders(['scenario'=>Orders::SCENARIO_CONTACTS]);
 
         if($order->load(Yii::$app->request->post()) && $order->validate()){
             $order->name=Html::encode($order->name);
@@ -209,6 +209,28 @@ class AdminController extends Controller
             $order->save(); 
 
             Yii::$app->mailer->compose('order', ['id'=>$order->id,'name'=>$order->name, 'phone'=>$order->phone, 'email'=>$order->email, 'city'=>$order->city, 'age'=>$order->age, 'comment'=>$order->comment])
+                ->setFrom(['kuvshinkaclubsite@gmail.com'=>'KUVSHINKACLUB'])
+                ->setTo('eragorn2013@yandex.ru')
+                ->setSubject('Заказ обратного звонка')
+                ->send();
+
+            Yii::$app->session->setFlash('message','Мы приняли вашу заявку. Ожидайте звонка.');           
+        }
+        return Yii::$app->response->redirect(['/contacts']);
+    }
+
+    public function actionSendOrderPopup(){
+        $order=new Orders(['scenario'=>Orders::SCENARIO_POPUP]);
+
+        if($order->load(Yii::$app->request->post()) && $order->validate()){
+            $order->name=Html::encode($order->name);
+            $order->phone=Html::encode($order->phone);
+            $order->email=Html::encode($order->email);            
+            $order->date=date('Y-m-d');
+            $order->time=date('H:i:s');
+            $order->save(); 
+
+            Yii::$app->mailer->compose('order', ['id'=>$order->id,'name'=>$order->name, 'phone'=>$order->phone, 'email'=>$order->email])
                 ->setFrom(['kuvshinkaclubsite@gmail.com'=>'KUVSHINKACLUB'])
                 ->setTo('eragorn2013@yandex.ru')
                 ->setSubject('Заказ обратного звонка')

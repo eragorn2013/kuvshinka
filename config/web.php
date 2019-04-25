@@ -89,6 +89,7 @@ $config = [
                 '/admin/gallery/add-img'=>'admin/add-image',
                 '/admin/gallery/delete-image/<id:([0-9]+)>'=>'admin/delete-image',
                 '/admin/send-order'=>'admin/send-order',
+                '/admin/send-order/popup'=>'admin/send-order-popup',
                 '/admin/exit'=>'admin/exit',
             ],
         ],        

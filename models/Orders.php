@@ -22,6 +22,9 @@ class Orders extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    const SCENARIO_CONTACTS = 'contacts';
+    const SCENARIO_POPUP = 'popup';
+
     public $reCaptcha;
     public static function tableName()
     {
@@ -44,6 +47,14 @@ class Orders extends \yii\db\ActiveRecord
             [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator::className(), 'secret' => '6Lfc6Z8UAAAAAElZT7mFgmuRC8UNjL6a8fwqRu-i', 'uncheckedMessage' => 'Пожалуйста, пройдите проверку, что вы не робот'],
         ];
     }
+
+    public function scenarios()
+    {
+        return [
+            self::SCENARIO_CONTACTS => ['name', 'phone', 'email', 'city', 'age', 'comment', 'date', 'time','reCaptcha'],
+            self::SCENARIO_POPUP => ['name', 'phone', 'email', 'date', 'time','reCaptcha'],            
+        ];
+    } 
 
     /**
      * {@inheritdoc}
