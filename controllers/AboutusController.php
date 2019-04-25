@@ -5,21 +5,18 @@ namespace app\controllers;
 use Yii;
 use yii\web\Controller;
 use app\components\Behaviors;
-use app\models\News;
 use app\models\Seo;
 
-class IndexController extends Controller
+class AboutusController extends Controller
 { 
 	public function behaviors(){
         return [Behaviors::className()];           
     }   
     public function actionIndex()
-    {
-    	$news=News::find()->orderBy('id DESC')->where(['active'=>1])->limit(3)->all();
-        $seoData=Seo::findOne(1);
-        return $this->render('index', [            
-            'seoData'=>$seoData,
-        	'news'=>$news,
+    { 
+    	$seoData=Seo::findOne(2);   	
+        return $this->render('aboutus', [ 
+        	'seoData'=>$seoData,       	
         	'admin'=>$this->admin(),
         ]);
     }   

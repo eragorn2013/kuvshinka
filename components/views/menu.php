@@ -2,8 +2,18 @@
 	use yii\helpers\Html;
 	use yii\helpers\Url;
 ?>
-<?= Html::a('О нас', '#'); ?>
-<?= Html::a('Условия посещения', '#'); ?>
+
+<?php if($page=='aboutus'): ?>
+	<?= Html::a('О нас', '/aboutus', ['class'=>'active']); ?>
+<?php else: ?>
+	<?= Html::a('О нас', '/aboutus'); ?>
+<?php endif; ?>
+
+<?php if($page=='conditions'): ?>
+	<?= Html::a('Условия посещения', '/conditions', ['class'=>'active']); ?>
+<?php else: ?>
+	<?= Html::a('Условия посещения', '/conditions'); ?>
+<?php endif; ?>
 
 <?php if($page=='news'): ?>
 	<?= Html::a('Новости', '/news', ['class'=>'active']); ?>
@@ -17,4 +27,8 @@
 	<?= Html::a('Галерея', '/gallery'); ?>
 <?php endif; ?>
 
-<?= Html::a('Контакты', '#'); ?>
+<?php if($page=='contacts'): ?>
+	<?= Html::a('Контакты', '/contacts', ['class'=>'active']); ?>
+<?php else: ?>
+	<?= Html::a('Контакты', '/contacts'); ?>
+<?php endif; ?>

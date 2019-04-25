@@ -32,6 +32,12 @@ $config = [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
         ],
+        'reCaptcha' => [
+            'name' => 'reCaptcha',
+            'class' => 'himiklab\yii2\recaptcha\ReCaptcha',
+            'siteKey' => '6Lfc6Z8UAAAAAF4vy9Pt2oDK3eYxtNvVzQaXJ2I4',
+            'secret' => '6Lfc6Z8UAAAAAElZT7mFgmuRC8UNjL6a8fwqRu-i',
+        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -40,7 +46,15 @@ $config = [
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'useFileTransport' => false,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.gmail.com', //смотреть данные на яндексе (или гугле)
+                'username' => 'kuvshinkaclubsite@gmail.com', //логин и пароль почты через которую будет отправка
+                'password' => '159875321Kuvshinka',
+                'port' => '465', //смотреть данные на яндексе (или гугле)
+                'encryption' => 'SSL' //смотреть данные на яндексе (или гугле)
+            ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -60,6 +74,11 @@ $config = [
                 '/'=>'index/index',
                 '/admin'=>'admin/index',
                 '/news'=>'news/index',
+                '/aboutus'=>'aboutus/index',
+                '/'=>'admin/send-order',
+                '/contacts'=>'contacts/index',
+                '/admin/update-seo/<id:([0-9]+)>'=>'admin/update-seo',
+                '/conditions'=>'conditions/index',
                 '/news/<id:([0-9]+)>'=>'news/news-current',
                 '/admin/news/add-news'=>'admin/add-news',
                 '/admin/news/drop-news/<id:([0-9]+)>'=>'admin/drop-news',
@@ -69,6 +88,7 @@ $config = [
                 '/admin/news/delete-photo-news'=>'admin/delete-photo-news',
                 '/admin/gallery/add-img'=>'admin/add-image',
                 '/admin/gallery/delete-image/<id:([0-9]+)>'=>'admin/delete-image',
+                '/admin/send-order'=>'admin/send-order',
                 '/admin/exit'=>'admin/exit',
             ],
         ],        

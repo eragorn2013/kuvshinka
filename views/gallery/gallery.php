@@ -1,11 +1,16 @@
 <?php
 	use yii\helpers\Html;
 	use yii\helpers\Url;
-	use yii\widgets\ActiveForm;			
+	use yii\widgets\ActiveForm;	
+	use app\components\SeoData;
+
+	$this->title=$seoData->title;
+    $this->registerMetaTag(['name' => 'description', 'content' => $seoData->description]); 
+    $this->registerMetaTag(['name' => 'keywords', 'content' => $seoData->keywords]);		
 ?>
 <section id='gallery'>
 	<div class='container'>
-		<?= Html::tag('h2', 'Галерея'); ?>
+		<?= Html::tag('h1', 'Галерея'); ?>
 		<?php if($admin): ?>
 			<?php if(Yii::$app->session->hasFlash('message')): ?>
 				<p id='message'><?= Yii::$app->session->getFlash('message'); ?></p>
@@ -40,3 +45,6 @@
 		</div>
 	</div>
 </section>
+<?php if($admin): ?>
+    <?= SeoData::widget(['id'=>5]); ?>
+<?php endif; ?>

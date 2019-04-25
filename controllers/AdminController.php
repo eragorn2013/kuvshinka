@@ -6,11 +6,14 @@ use Yii;
 use yii\web\Controller;
 use yii\web\UploadedFile;
 use yii\helpers\FileHelper;
+use yii\helpers\Html;
 use app\models\User;
 use app\components\Behaviors;
 use app\models\News;
 use app\models\Images;
 use app\models\Gallery;
+use app\models\Orders;
+use app\models\Seo;
 
 class AdminController extends Controller
 {
@@ -189,5 +192,61 @@ class AdminController extends Controller
         $image->delete();
 
         return Yii::$app->response->redirect(['/gallery']);
+    }
+
+    public function actionSendOrder(){
+        $order=new Orders();
+
+        if($order->load(Yii::$app->request->post()) && $order->validate()){
+            $order->name=Html::encode($order->name);
+            $order->phone=Html::encode($order->phone);
+            $order->email=Html::encode($order->email);
+            $order->city=Html::encode($order->city);
+            $order->age=(int)$order->age;
+            $order->comment=Html::encode($order->comment);
+            $order->date=date('Y-m-d');
+            $order->time=date('H:i:s');
+            $order->save(); 
+
+            Yii::$app->mailer->compose('order', ['id'=>$order->id,'name'=>$order->name, 'phone'=>$order->phone, 'email'=>$order->email, 'city'=>$order->city, 'age'=>$order->age, 'comment'=>$order->comment])
+                ->setFrom(['kuvshinkaclubsite@gmail.com'=>'KUVSHINKACLUB'])
+                ->setTo('eragorn2013@yandex.ru')
+                ->setSubject('Заказ обратного звонка')
+                ->send();
+
+            Yii::$app->session->setFlash('message','Мы приняли вашу заявку. Ожидайте звонка.');           
+        }
+        return Yii::$app->response->redirect(['/contacts']);
+    }
+
+    public function actionUpdateSeo($id){
+        $id=(int)$id;
+        if(!$this->admin()){
+            switch($id){
+                case 1: return Yii::$app->response->redirect(['/']); break;
+                case 2: return Yii::$app->response->redirect(['/aboutus']); break;
+                case 3: return Yii::$app->response->redirect(['/conditions']); break;
+                case 4: return Yii::$app->response->redirect(['/news']); break;
+                case 5: return Yii::$app->response->redirect(['/gallery']); break;
+                case 6: return Yii::$app->response->redirect(['/contacts']); break;
+                default: return Yii::$app->response->redirect(['/']); break;
+            }            
+        }        
+        $seo=Seo::findOne($id);
+        if($seo->load(Yii::$app->request->post()) && $seo->validate()){
+            $seo->title=Html::encode($seo->title);
+            $seo->description=Html::encode($seo->description);
+            $seo->keywords=Html::encode($seo->keywords);
+            $seo->update();
+        }
+        switch($id){
+            case 1: return Yii::$app->response->redirect(['/']); break;
+            case 2: return Yii::$app->response->redirect(['/aboutus']); break;
+            case 3: return Yii::$app->response->redirect(['/conditions']); break;
+            case 4: return Yii::$app->response->redirect(['/news']); break;
+            case 5: return Yii::$app->response->redirect(['/gallery']); break;
+            case 6: return Yii::$app->response->redirect(['/contacts']); break;
+            default: return Yii::$app->response->redirect(['/']); break;
+        }
     }
 }

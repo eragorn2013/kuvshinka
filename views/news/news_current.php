@@ -3,11 +3,7 @@
 	use yii\helpers\Url;	
 
 	$this->title=$news->head;
-	$this->registerMetaTag(['name' => 'description', 'content' => $news->preview]);	
-
-	$this->registerJsFile('@js/owlcarousel/docs/assets/owlcarousel/owl.carousel.min.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
-	$this->registerCssFile('@js/owlcarousel/docs/assets/owlcarousel/assets/owl.carousel.css');
-	$this->registerCssFile('@js/owlcarousel/docs/assets/owlcarousel/assets/owl.theme.green.css');
+	$this->registerMetaTag(['name' => 'description', 'content' => $news->preview]);		
 ?>
 <section id='newscurrent'>
 	<div class='container'>

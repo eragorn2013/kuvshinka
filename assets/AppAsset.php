@@ -22,9 +22,13 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/site.css',
         'js/lightgallery/dist/css/lightgallery.css',
+        'js/owlcarousel/docs/assets/owlcarousel/assets/owl.carousel.css',
+        'js/owlcarousel/docs/assets/owlcarousel/assets/owl.theme.green.css',
     ];
     public $js = [
         'js/lightgallery/dist/js/lightgallery.min.js',
+        'js/owlcarousel/docs/assets/owlcarousel/owl.carousel.min.js',
+        'js/phone/jquery.mask.min.js',
         'js/site.js',
         'js/admin.js',
     ];

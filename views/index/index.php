@@ -1,12 +1,17 @@
 <?php
     use yii\helpers\Html;
-    use yii\helpers\Url;       
+    use yii\helpers\Url;  
+    use app\components\SeoData;   
+
+    $this->title=$seoData->title;
+    $this->registerMetaTag(['name' => 'description', 'content' => $seoData->description]); 
+    $this->registerMetaTag(['name' => 'keywords', 'content' => $seoData->keywords]);  
 ?>
 <section id='offer'>
     <div class='container'>
         <div class='content'>
             <h1>Домашний детский клуб &ldquo;Кувшинка&rdquo; - <span>единственное в Наро-фоминском районе детское дошкольное учреждение с концепцией мягкой социализации ребенка.</span></h1>
-            <?= Html::a('Записаться в кувшинку', '#', ['class'=>'call']); ?>            
+            <?= Html::a('Записаться в кувшинку', Url::toRoute(['/contacts']), ['class'=>'call']); ?>            
         </div>
         <?= Html::img('@img/children.png', ['alt'=>'Домашний детский клуб "Кувшинка"', 'title'=>'Домашний детский клуб "Кувшинка"']); ?>
     </div>
@@ -78,3 +83,6 @@
     <?= Html::tag('h2', 'Мы находимся'); ?>
     <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aac180fddbd66b8e2e0cbfa617b62edc8791dcf9317893aa0964a411dc237dcc7&amp;source=constructor" width="100%" frameborder="0"></iframe>
 </section>
+<?php if($admin): ?>
+    <?= SeoData::widget(['id'=>1]); ?>
+<?php endif; ?>

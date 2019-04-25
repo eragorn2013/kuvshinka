@@ -3,10 +3,15 @@
 	use yii\helpers\Url;
 	use yii\widgets\ActiveForm;	
 	use vova07\imperavi\Widget;	
+	use app\components\SeoData;
+
+	$this->title=$seoData->title;
+    $this->registerMetaTag(['name' => 'description', 'content' => $seoData->description]); 
+    $this->registerMetaTag(['name' => 'keywords', 'content' => $seoData->keywords]);
 ?>
 <section id="newspage">
 	<div class='container'>
-		<?= Html::tag('h2', 'Новости'); ?>
+		<?= Html::tag('h1', 'Новости'); ?>
 		<?php if($admin): ?>
 			<?= Html::a('Добавить новость', '/admin/news/add-news', ['class'=>'admin-button']); ?>
 		<?php endif; ?>		
@@ -49,6 +54,9 @@
 		</div>
 	</div>
 </section>
+<?php if($admin): ?>
+    <?= SeoData::widget(['id'=>4]); ?>
+<?php endif; ?>
 <?php if($news && $admin): ?>
 	<?php foreach($news as $item): ?>
 		<section class='admin-edit-news' id='admin-edit-news-<?= $item->id ?>'>
@@ -127,3 +135,4 @@ if($news && $admin){
 	]);		
 }
 ?>
+

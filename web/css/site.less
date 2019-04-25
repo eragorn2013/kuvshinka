@@ -215,9 +215,75 @@
 							p{
 								width: 300px;
 								font-size: 22px;
-							}
-							
+							}							
 						}
+					}
+				}
+			}
+		}
+	}
+	#conditions, #aboutus{
+		.container{
+			padding: 0px 40px 50px 40px;
+			border-left: 2px solid #f8f8f8;
+			border-right: 2px solid #f8f8f8;
+			.content{
+				h1{
+					font-size: 36px;
+					color: @blue;
+				}
+				img{
+					width: 100%;
+					display: block;
+				}
+				p{
+					margin-bottom: 10px;
+					font-size: 20px;
+					color: #717070;
+					&.info{
+						font-size: 28px;
+						line-height: 30px;	
+						margin-bottom: 30px;					
+					}
+					&.bold{
+						font-weight: bold;
+					}
+					&.italic{
+						font-style: italic;
+						margin-top: 20px;
+					}
+				}
+				ul{
+					li{						
+						font-size: 20px;
+						margin: 10px 0px 10px 20px;
+						color: #717070;
+					}
+				}
+				hr{
+					border: 0;
+					height: 4px;
+					background: #f8f8f8;
+					display: block;
+					width: 100%;
+					border-radius: 5px;
+					margin-top: 25px;
+				}
+				h2{
+					color: @blue;
+					margin: 15px 0;
+					font-size: 30px;
+				}
+				h3{
+					font-size: 20px;
+				}
+				.forms{
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: space-between;
+					.item{
+						width: 47%;
+						margin-bottom: 50px;
 					}
 				}
 			}
@@ -286,13 +352,100 @@
 			display: block;
 		}
 	}
+	#contacts{
+		.container{
+			border-left: 2px solid #f8f8f8;
+			border-right: 2px solid #f8f8f8;
+			padding: 0px 40px 50px 40px;
+			.message{
+				background: #d4edda;
+				color: #155724;
+				border: 1px solid #c3e6cb;
+				padding: 10px 0;
+				width: 100%;
+				text-align: center;
+				font-size: 20px;
+				margin-bottom: 15px;
+			}
+			h1{
+				font-size: 36px;
+				color: @blue;
+				margin-bottom: 15px;
+			}
+			.content{
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				.item{
+					width: 48%;
+					&.form{
+						form{
+							border: 2px solid #b1b1b1;
+							border-radius: 20px;
+							padding: 30px;
+							h3{
+								color: #ed76b6;
+								margin-bottom: 10px;
+							}
+							.form-group{
+								margin-bottom: 10px;
+								input, textarea{
+									display: block;
+									width: 100%;
+									box-sizing: border-box;
+									padding: 7px;
+									border-radius: 10px;
+									border: 1px solid #999999;
+									outline: none;
+								}
+								.help-block{
+									font-size: 12px;
+								    width: 100%;
+								    text-align: center;
+								    color: #721c24;
+								    background: #f5c6cb;
+								}
+							}
+							button{
+								color: #fff;
+							    background: #35bab2;
+							    display: block;
+							    box-sizing: border-box;
+							    border-radius: 10px;
+							    padding: 5px 0;
+							    text-align: center;
+							    text-decoration: none;
+							    font-size: 18px;
+							    margin-top: 10px;
+							    border: 0;
+							    width: 30%;
+							    cursor: pointer;
+							    outline: none;
+							}
+						}
+					}
+					&.text{
+						p{
+							font-size: 18px;
+							margin-bottom: 15px;
+							span{
+								&.bold{
+									font-weight: bold;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	#gallery{
 		.container{
 			border-left: 2px solid #f8f8f8;
 			border-right: 2px solid #f8f8f8;
 			padding: 0px 40px 50px 40px;
-			h2{
-				font-size: 28px;
+			h1{
+				font-size: 36px;
 				color: @blue;
 			}
 			#message{
@@ -413,8 +566,8 @@
 			border-left: 2px solid #f8f8f8;
 			border-right: 2px solid #f8f8f8;
 			padding: 0px 40px 50px 40px;
-			h2{
-				font-size: 28px;
+			h1{
+				font-size: 36px;
 				color: @blue;
 			}
 			a.admin-button{
@@ -814,6 +967,42 @@
 			}
 		}
 	}
+	#seo{
+		background: #f6f6f6;
+		.container{
+			padding: 50px 0;
+			.content{
+				form{
+					.form-group{
+						margin-bottom: 7px;
+						input{
+							width: 100%;
+							padding: 7px;
+							border-radius: 3px;
+							border: 1px solid #b3b3b3;
+							box-sizing: border-box;
+							outline: none;
+						}
+					}
+					button{
+						color: #fff;
+					    background: #35bab2;
+					    display: block;
+					    width: 50%;
+					    box-sizing: border-box;
+					    border-radius: 3px;
+					    padding: 5px 0;
+					    text-align: center;
+					    text-decoration: none;
+					    font-size: 18px;					    
+					    border: 0;
+					    outline: none;
+					    cursor: pointer;
+					}
+				}
+			}
+		}
+	}
 	footer{
 		background: @blue;
 		.container{
@@ -870,6 +1059,73 @@
 								display: block;
 							}
 						}
+					}
+				}
+			}
+		}
+	}
+	#modal-form{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,0.8);
+		z-index: 1000000000;
+		overflow: auto;	
+		display: none;
+		img.close-modal{
+			position: absolute;
+			width: 50px;
+			top: 10px;
+			right: 10px;
+			cursor: pointer;
+		}	
+		.container{
+			.content{
+
+				form{
+					border: 2px solid #b1b1b1;
+					border-radius: 20px;
+					padding: 30px;
+					background: #fff;
+					width: 50%;
+					margin: 30px auto 0;	
+
+					.form-group{
+						margin-bottom: 10px;
+						input, textarea{
+							display: block;
+							width: 100%;
+							box-sizing: border-box;
+							padding: 7px;
+							border-radius: 10px;
+							border: 1px solid #999999;
+							outline: none;
+						}
+						.help-block{
+							font-size: 12px;
+						    width: 100%;
+						    text-align: center;
+						    color: #721c24;
+						    background: #f5c6cb;
+						}
+					}
+					button{
+						color: #fff;
+					    background: #35bab2;
+					    display: block;
+					    box-sizing: border-box;
+					    border-radius: 10px;
+					    padding: 5px 0;
+					    text-align: center;
+					    text-decoration: none;
+					    font-size: 18px;
+					    margin-top: 10px;
+					    border: 0;
+					    width: 50%;
+					    cursor: pointer;
+					    outline: none;
 					}
 				}
 			}
@@ -1001,6 +1257,54 @@
 				}
 			}
 		}
+		#conditions, #aboutus{
+			.container{
+				padding: 0px 20px 30px 20px;
+				border-left: 2px solid #f8f8f8;
+				border-right: 2px solid #f8f8f8;
+				.content{
+					h1{
+						font-size: 32px;						
+					}					
+					p{
+						margin-bottom: 10px;
+						font-size: 20px;						
+						&.info{
+							font-size: 24px;
+							line-height: 30px;	
+							margin-bottom: 30px;					
+						}						
+						&.italic{
+							margin-top: 20px;
+						}
+					}
+					ul{
+						li{						
+							font-size: 20px;
+							margin: 10px 0px 10px 20px;						
+						}
+					}
+					hr{						
+						height: 3px;					
+						border-radius: 5px;
+						margin-top: 25px;
+					}
+					h2{						
+						margin: 15px 0;
+						font-size: 30px;
+					}
+					h3{
+						font-size: 20px;
+					}
+					.forms{						
+						.item{
+							width: 47%;
+							margin-bottom: 50px;
+						}
+					}
+				}
+			}
+		}
 		#news{
 			h2{				
 				padding: 7px 0;				
@@ -1043,13 +1347,68 @@
 				height: 530px;				
 			}
 		}
+		#contacts{
+			.container{
+				border-left: 2px solid #f8f8f8;
+				border-right: 2px solid #f8f8f8;
+				padding: 0px 20px 30px 20px;
+				.message{				
+					padding: 10px 0;				
+					font-size: 20px;
+					margin-bottom: 15px;
+				}
+				h1{
+					font-size: 36px;
+					color: @blue;
+					margin-bottom: 15px;
+				}
+				.content{					
+					.item{
+						width: 48%;
+						&.form{
+							form{
+								border: 2px solid #b1b1b1;
+								border-radius: 20px;
+								padding: 30px;
+								h3{									
+									margin-bottom: 10px;
+								}
+								.form-group{
+									margin-bottom: 10px;
+									input, textarea{						
+										padding: 7px;
+										border-radius: 10px;									
+									}
+									.help-block{
+										font-size: 12px;									   
+									}
+								}
+								button{									
+								    border-radius: 10px;
+								    padding: 5px 0;								    
+								    font-size: 18px;
+								    margin-top: 10px;								    
+								    width: 100%;								    
+								}
+							}
+						}
+						&.text{
+							p{
+								font-size: 18px;
+								margin-bottom: 15px;								
+							}
+						}
+					}
+				}
+			}
+		}
 		#gallery{
 			.container{
 				border-left: 2px solid #f8f8f8;
 				border-right: 2px solid #f8f8f8;
 				padding: 0px 20px 30px 20px;
-				h2{
-					font-size: 28px;					
+				h1{
+					font-size: 32px;				
 				}
 				#message{
 					margin-top: 20px;					
@@ -1114,8 +1473,8 @@
 		#newspage{
 			.container{				
 				padding: 0px 40px 50px 40px;
-				h2{
-					font-size: 28px;					
+				h1{
+					font-size: 32px;				
 				}
 				a.admin-button{					
 					width: 30%;					
@@ -1374,6 +1733,38 @@
 				}
 			}
 		}
+		#modal-form{			
+			img.close-modal{				
+				width: 50px;
+				top: 10px;
+				right: 10px;				
+			}	
+			.container{
+				.content{
+					form{
+						border: 2px solid #b1b1b1;
+						border-radius: 20px;
+						padding: 30px;						
+						width: 50%;
+						margin: 30px auto 0;
+						.form-group{
+							margin-bottom: 10px;
+							input, textarea{								
+								padding: 7px;
+								border-radius: 10px;															
+							}							
+						}
+						button{							
+						    border-radius: 10px;
+						    padding: 5px 0;						    
+						    font-size: 18px;
+						    margin-top: 10px;						   
+						    width: 50%;						   
+						}
+					}
+				}
+			}
+		}
 	}
 }
 @media (max-width: 844px){
@@ -1504,6 +1895,54 @@
 				}
 			}
 		}
+		#conditions, #aboutus{
+			.container{
+				padding: 0px 20px 30px 20px;
+				border-left: 2px solid #f8f8f8;
+				border-right: 2px solid #f8f8f8;
+				.content{
+					h1{
+						font-size: 32px;						
+					}					
+					p{
+						margin-bottom: 10px;
+						font-size: 18px;						
+						&.info{
+							font-size: 22px;
+							line-height: 24px;	
+							margin-bottom: 15px;					
+						}						
+						&.italic{
+							margin-top: 20px;
+						}
+					}
+					ul{
+						li{						
+							font-size: 18px;
+							margin: 10px 0px 10px 20px;						
+						}
+					}
+					hr{						
+						height: 3px;					
+						border-radius: 5px;
+						margin-top: 25px;
+					}
+					h2{						
+						margin: 10px 0;
+						font-size: 24px;
+					}
+					h3{
+						font-size: 20px;
+					}
+					.forms{						
+						.item{
+							width: 47%;
+							margin-bottom: 50px;
+						}
+					}
+				}
+			}
+		}
 		#news{
 			h2{				
 				padding: 7px 0;				
@@ -1546,13 +1985,68 @@
 				height: 300px;				
 			}
 		}
+		#contacts{
+			.container{
+				border-left: 2px solid #f8f8f8;
+				border-right: 2px solid #f8f8f8;
+				padding: 0px 20px 30px 20px;
+				.message{				
+					padding: 10px 0;				
+					font-size: 20px;
+					margin-bottom: 15px;
+				}
+				h1{
+					font-size: 32px;					
+					margin-bottom: 15px;
+				}
+				.content{					
+					.item{
+						width: 100%;
+						&.form{
+							form{
+								border: 2px solid #b1b1b1;
+								border-radius: 20px;
+								padding: 20px;
+								h3{									
+									margin-bottom: 10px;
+								}
+								.form-group{
+									margin-bottom: 10px;
+									input, textarea{						
+										padding: 7px;
+										border-radius: 10px;									
+									}
+									.help-block{
+										font-size: 12px;									   
+									}
+								}
+								button{									
+								    border-radius: 10px;
+								    padding: 5px 0;								    
+								    font-size: 18px;
+								    margin-top: 10px;								    
+								    width: 100%;								    
+								}
+							}
+						}
+						&.text{
+							margin-top: 10px;
+							p{
+								font-size: 18px;
+								margin-bottom: 15px;								
+							}
+						}
+					}
+				}
+			}
+		}
 		#gallery{
 			.container{
 				border-left: 2px solid #f8f8f8;
 				border-right: 2px solid #f8f8f8;
 				padding: 0px 20px 30px 20px;
-				h2{
-					font-size: 28px;					
+				h1{
+					font-size: 32px;					
 				}
 				#message{
 					margin-top: 20px;					
@@ -1617,8 +2111,8 @@
 		#newspage{
 			.container{				
 				padding: 0px 20px 30px 20px;
-				h2{
-					font-size: 28px;					
+				h1{
+					font-size: 32px;				
 				}
 				a.admin-button{					
 					width: 30%;					
@@ -1841,6 +2335,39 @@
 				}
 			}
 		}
+		#modal-form{			
+			img.close-modal{				
+				width: 50px;
+				top: 10px;
+				right: 10px;				
+			}	
+			.container{
+				.content{
+					form{
+						border: 2px solid #b1b1b1;
+						border-radius: 20px;
+						padding: 10px;						
+						width: 100%;
+						margin: 70px auto 0;
+						box-sizing: border-box;
+						.form-group{
+							margin-bottom: 10px;
+							input, textarea{								
+								padding: 7px;
+								border-radius: 10px;															
+							}							
+						}
+						button{							
+						    border-radius: 10px;
+						    padding: 5px 0;						    
+						    font-size: 18px;
+						    margin-top: 10px;						   
+						    width: 100%;						   
+						}
+					}
+				}
+			}
+		}
 		footer{			
 			.container{
 				padding: 50px 20px;
@@ -2014,6 +2541,54 @@
 				}
 			}
 		}
+		#conditions, #aboutus{
+			.container{
+				padding: 0px 10px 20px 10px;
+				border-left: 2px solid #f8f8f8;
+				border-right: 2px solid #f8f8f8;
+				.content{
+					h1{
+						font-size: 28px;						
+					}					
+					p{
+						margin-bottom: 10px;
+						font-size: 18px;						
+						&.info{
+							font-size: 20px;
+							line-height: 24px;	
+							margin-bottom: 15px;					
+						}						
+						&.italic{
+							margin-top: 20px;
+						}
+					}
+					ul{
+						li{						
+							font-size: 18px;
+							margin: 7px 0px 7px 20px;						
+						}
+					}
+					hr{						
+						height: 3px;					
+						border-radius: 5px;
+						margin-top: 25px;
+					}
+					h2{						
+						margin: 10px 0;
+						font-size: 24px;
+					}
+					h3{
+						font-size: 20px;
+					}
+					.forms{						
+						.item{
+							width: 100%;
+							margin-bottom: 20px;
+						}
+					}
+				}
+			}
+		}
 		#news{
 			h2{				
 				padding: 7px 0;				
@@ -2057,13 +2632,68 @@
 				height: 250px;				
 			}
 		}
+		#contacts{
+			.container{
+				border-left: 2px solid #f8f8f8;
+				border-right: 2px solid #f8f8f8;
+				padding: 0px 10px 20px 10px;
+				.message{				
+					padding: 10px 0;				
+					font-size: 20px;
+					margin-bottom: 15px;
+				}
+				h1{
+					font-size: 28px;					
+					margin-bottom: 15px;
+				}
+				.content{					
+					.item{
+						width: 100%;
+						&.form{
+							form{
+								border: 1px solid #b1b1b1;
+								border-radius: 20px;
+								padding: 20px;
+								h3{									
+									margin-bottom: 10px;
+								}
+								.form-group{
+									margin-bottom: 10px;
+									input, textarea{						
+										padding: 7px;
+										border-radius: 10px;									
+									}
+									.help-block{
+										font-size: 12px;									   
+									}
+								}
+								button{									
+								    border-radius: 10px;
+								    padding: 5px 0;								    
+								    font-size: 18px;
+								    margin-top: 10px;								    
+								    width: 100%;								    
+								}
+							}
+						}
+						&.text{
+							margin-top: 10px;
+							p{
+								font-size: 18px;
+								margin-bottom: 15px;								
+							}
+						}
+					}
+				}
+			}
+		}
 		#gallery{
 			.container{
 				border-left: 2px solid #f8f8f8;
 				border-right: 2px solid #f8f8f8;
 				padding: 0px 10px 20px 10px;
-				h2{
-					font-size: 28px;					
+				h1{
+					font-size: 28px;				
 				}
 				#message{
 					margin-top: 20px;					
@@ -2131,8 +2761,8 @@
 		#newspage{
 			.container{				
 				padding: 0px 10px 20px 10px;
-				h2{
-					font-size: 22px;					
+				h1{
+					font-size: 28px;					
 				}
 				a.admin-button{					
 					width: 50%;					
@@ -2363,6 +2993,39 @@
 				}
 			}
 		}
+		#modal-form{			
+			img.close-modal{				
+				width: 50px;
+				top: 10px;
+				right: 10px;				
+			}	
+			.container{
+				.content{
+					form{
+						border: 2px solid #b1b1b1;
+						border-radius: 20px;
+						padding: 10px;						
+						width: 100%;
+						margin: 70px auto 0;
+						box-sizing: border-box;
+						.form-group{
+							margin-bottom: 10px;
+							input, textarea{								
+								padding: 7px;
+								border-radius: 10px;															
+							}							
+						}
+						button{							
+						    border-radius: 10px;
+						    padding: 5px 0;						    
+						    font-size: 18px;
+						    margin-top: 10px;						   
+						    width: 100%;						   
+						}
+					}
+				}
+			}
+		}
 		footer{			
 			.container{
 				padding: 50px 10px;
@@ -2554,6 +3217,54 @@
 				}
 			}
 		}
+		#conditions, #aboutus{
+			.container{
+				padding: 0px 10px 20px 10px;
+				border-left: 0px solid #f8f8f8;
+				border-right: 0px solid #f8f8f8;
+				.content{
+					h1{
+						font-size: 28px;						
+					}					
+					p{
+						margin-bottom: 10px;
+						font-size: 18px;						
+						&.info{
+							font-size: 20px;
+							line-height: 24px;	
+							margin-bottom: 15px;					
+						}						
+						&.italic{
+							margin-top: 20px;
+						}
+					}
+					ul{
+						li{						
+							font-size: 18px;
+							margin: 7px 0px 7px 20px;						
+						}
+					}
+					hr{						
+						height: 3px;					
+						border-radius: 5px;
+						margin-top: 25px;
+					}
+					h2{						
+						margin: 10px 0;
+						font-size: 24px;
+					}
+					h3{
+						font-size: 20px;
+					}
+					.forms{						
+						.item{
+							width: 100%;
+							margin-bottom: 20px;
+						}
+					}
+				}
+			}
+		}
 		#news{
 			h2{				
 				padding: 7px 0;				
@@ -2597,12 +3308,67 @@
 				height: 250px;				
 			}
 		}
+		#contacts{
+			.container{
+				border-left: 0px solid #f8f8f8;
+				border-right: 0px solid #f8f8f8;
+				padding: 0px 10px 20px 10px;
+				.message{				
+					padding: 10px 0;				
+					font-size: 20px;
+					margin-bottom: 15px;
+				}
+				h1{
+					font-size: 28px;					
+					margin-bottom: 15px;
+				}
+				.content{					
+					.item{
+						width: 100%;
+						&.form{
+							form{
+								border: 0px solid #b1b1b1;
+								border-radius: 20px;
+								padding: 0px;
+								h3{									
+									margin-bottom: 10px;
+								}
+								.form-group{
+									margin-bottom: 10px;
+									input, textarea{						
+										padding: 7px;
+										border-radius: 10px;									
+									}
+									.help-block{
+										font-size: 12px;									   
+									}
+								}
+								button{									
+								    border-radius: 10px;
+								    padding: 5px 0;								    
+								    font-size: 18px;
+								    margin-top: 10px;								    
+								    width: 100%;								    
+								}
+							}
+						}
+						&.text{
+							margin-top: 10px;
+							p{
+								font-size: 18px;
+								margin-bottom: 15px;								
+							}
+						}
+					}
+				}
+			}
+		}
 		#gallery{
 			.container{
 				border-left: 0px solid #f8f8f8;
 				border-right: 0px solid #f8f8f8;
 				padding: 0px 10px 20px 10px;
-				h2{
+				h1{
 					font-size: 28px;					
 				}
 				#message{
@@ -2672,8 +3438,8 @@
 				padding: 0px 10px 20px 10px;
 				border-left: 0px solid #f8f8f8;
 				border-right: 0px solid #f8f8f8;
-				h2{
-					font-size: 22px;					
+				h1{
+					font-size: 28px;					
 				}
 				a.admin-button{					
 					width: 100%;					
@@ -2903,6 +3669,40 @@
 				    padding: 5px 0;				    
 				    font-size: 18px;
 				    margin-top: 20px;
+				}
+			}
+		}
+		#modal-form{			
+			img.close-modal{				
+				width: 50px;
+				top: 10px;
+				right: 10px;				
+			}	
+			.container{
+				.content{
+					form{
+						border: 0px solid #b1b1b1;
+						border-radius: 20px;
+						padding: 0px;						
+						width: 100%;
+						margin: 70px auto 0;
+						box-sizing: border-box;
+						background: none;
+						.form-group{
+							margin-bottom: 10px;
+							input, textarea{								
+								padding: 7px;
+								border-radius: 10px;															
+							}							
+						}
+						button{							
+						    border-radius: 10px;
+						    padding: 5px 0;						    
+						    font-size: 18px;
+						    margin-top: 10px;						   
+						    width: 100%;						   
+						}
+					}
 				}
 			}
 		}		

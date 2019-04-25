@@ -7,6 +7,7 @@ use yii\web\Controller;
 use app\components\Behaviors;
 use app\models\News;
 use app\models\Images;
+use app\models\Seo;
 
 class NewsController extends Controller
 { 
@@ -21,8 +22,10 @@ class NewsController extends Controller
     	else{
     		$news=News::find()->where(['active'=>1])->orderBy('id DESC')->with('images')->all();
     	}    	
-    	$images=new Images();  	
+    	$images=new Images();  
+        $seoData=Seo::findOne(4);   	
         return $this->render('news', [ 
+            'seoData'=>$seoData,
         	'images'=>$images,       	
         	'news'=>$news,
         	'admin'=>$this->admin(),

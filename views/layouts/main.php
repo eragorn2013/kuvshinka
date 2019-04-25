@@ -8,6 +8,7 @@ use yii\helpers\Url;
 use app\assets\AppAsset;
 use app\components\Menu;
 use app\components\ExitAdmin;
+use app\components\Form;
 
 AppAsset::register($this);
 ?>
@@ -18,6 +19,7 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:image" content="/web/img/logo-color.png">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -39,12 +41,12 @@ AppAsset::register($this);
                     </div>
                     <div class='item social'>
                         <div class='point question'>
-                            <?= Html::a('Задать вопрос', '#'); ?>
+                            <?= Html::a('Задать вопрос', '#', ['id'=>'open-form']); ?>
                         </div>
                         <div class='point links'>
-                            <?= Html::a(Html::img('@img/inst-color.png', ['alt'=>'Ссылка на социальную сеть Инстаграм', 'title'=>'Ссылка на социальную сеть инстаграм']), '#'); ?>
-                            <?= Html::a(Html::img('@img/vk-color.png', ['alt'=>'Ссылка на социальную сеть Вконтакте', 'title'=>'Ссылка на социальную сеть Вконтакте']), '#'); ?>
-                            <?= Html::a(Html::img('@img/fb-color.png', ['alt'=>'Ссылка на социальную сеть Фэйсбук', 'title'=>'Ссылка на социальную сеть Фэйсбук']), '#'); ?>
+                            <?= Html::a(Html::img('@img/inst-color.png', ['alt'=>'Ссылка на социальную сеть Инстаграм', 'title'=>'Ссылка на социальную сеть инстаграм']), 'https://www.instagram.com/kuvshinkaclub/', ['target'=>'_blank']); ?>
+                            <?= Html::a(Html::img('@img/vk-color.png', ['alt'=>'Ссылка на социальную сеть Вконтакте', 'title'=>'Ссылка на социальную сеть Вконтакте']), 'https://vk.com/kuvshinkaclub', ['target'=>'_blank']); ?>
+                            <?= Html::a(Html::img('@img/fb-color.png', ['alt'=>'Ссылка на социальную сеть Фэйсбук', 'title'=>'Ссылка на социальную сеть Фэйсбук']), 'https://www.facebook.com/groups/kuvshinka/', ['target'=>'_blank']); ?>
                         </div>
                     </div>
                 </div>                
@@ -52,7 +54,7 @@ AppAsset::register($this);
             <div class='content menu'>
                 <?= Html::img('@img/menu.png', ['alt'=>'Мобильное меню', 'title'=>'Мобильное меню', 'id'=>'menu']); ?>
             </div>
-            <div class='content nav'>                
+            <div class='content nav'>
                 <?= Menu::widget(['page'=>Yii::$app->request->pathInfo]); ?>
             </div>
         </div>
@@ -67,11 +69,11 @@ AppAsset::register($this);
                     <?= Html::img('@img/logo-white.png', ['alt'=>'Поступление в "Кувшинку" возможно в любой период календарного года при наличии мест']); ?>
                 </div>
                 <div class='item nav'>
-                    <?= Html::a('О нас', '#'); ?>
-                    <?= Html::a('Условия посещения', '#'); ?>
+                    <?= Html::a('О нас', '/aboutus'); ?>
+                    <?= Html::a('Условия посещения', '/conditions'); ?>
                     <?= Html::a('Новости', '/news'); ?>
                     <?= Html::a('Галерея', '/gallery'); ?>
-                    <?= Html::a('Контакты', '#'); ?>
+                    <?= Html::a('Контакты', '/contacts'); ?>
                 </div>
                 <div class='item contacts'>
                     <?= Html::a('8 (916) 721-84-85', 'tel:79167218485', ['class'=>'telephone']) ?>
@@ -79,13 +81,14 @@ AppAsset::register($this);
                     <span class='weekends'>СБ-ВС выходной</span>
                 </div>
                 <div class='item social'>
-                    <?= Html::a(Html::img('@img/inst-white.png', ['alt'=>'Ссылка на социальную сеть Инстаграм', 'title'=>'Ссылка на социальную сеть инстаграм']), '#'); ?>
-                    <?= Html::a(Html::img('@img/vk-white.png', ['alt'=>'Ссылка на социальную сеть Вконтакте', 'title'=>'Ссылка на социальную сеть Вконтакте']), '#'); ?>
-                    <?= Html::a(Html::img('@img/fb-white.png', ['alt'=>'Ссылка на социальную сеть Фэйсбук', 'title'=>'Ссылка на социальную сеть Фэйсбук']), '#'); ?>
+                    <?= Html::a(Html::img('@img/inst-white.png', ['alt'=>'Ссылка на социальную сеть Инстаграм', 'title'=>'Ссылка на социальную сеть инстаграм']), 'https://www.instagram.com/kuvshinkaclub/', ['target'=>'_blank']); ?>
+                    <?= Html::a(Html::img('@img/vk-white.png', ['alt'=>'Ссылка на социальную сеть Вконтакте', 'title'=>'Ссылка на социальную сеть Вконтакте']), 'https://vk.com/kuvshinkaclub', ['target'=>'_blank']); ?>
+                    <?= Html::a(Html::img('@img/fb-white.png', ['alt'=>'Ссылка на социальную сеть Фэйсбук', 'title'=>'Ссылка на социальную сеть Фэйсбук']), 'https://www.facebook.com/groups/kuvshinka/', ['target'=>'_blank']); ?>
                 </div>
             </div>
         </div>
-    </footer>    
+    </footer> 
+    <?= Form::widget(); ?>   
 </div>
 <?php $this->endBody() ?>
 </body>
