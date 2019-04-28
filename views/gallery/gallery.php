@@ -15,7 +15,7 @@
 			<?php if(Yii::$app->session->hasFlash('message')): ?>
 				<p id='message'><?= Yii::$app->session->getFlash('message'); ?></p>
 			<?php endif; ?>
-		<?php endif; ?>
+		<?php endif; ?>		
 		<?php if($admin): ?>
 			<?php $form=ActiveForm::begin(['action'=>'/admin/gallery/add-img', 'options'=>['enctype' => 'multipart/form-data']]); ?>
 				<?= $form->field($gallery, 'alt')->textInput(['placeholder'=>'Описание к изображению'])->label(''); ?>
@@ -23,7 +23,7 @@
 				<?= Html::submitButton('Добавить', ['class'=>'admin-button']); ?>					
 			<?php ActiveForm::end(); ?>
 		<?php endif; ?>	
-		<div class='content <?php if(!$admin): ?>gallery<?php endif; ?>'>			
+		<div class='content <?php if(!$admin && $images): ?>gallery<?php endif; ?>'>			
 			<?php if($images): ?>
 				<?php foreach($images as $img): ?>
 					<?php if($admin): ?>
@@ -41,6 +41,8 @@
 						</a>
 					<?php endif; ?>									
 				<?php endforeach; ?>
+			<?php else: ?>
+				<?= Html::tag('p','Страница находится в стадии разработки. Ждите обновления в июне 2019г.', ['class'=>'tmp', 'style'=>'font-size: 22px; padding: 80px 0']); ?>
 			<?php endif; ?>
 		</div>
 	</div>

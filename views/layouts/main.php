@@ -81,6 +81,7 @@ AppAsset::register($this);
                     <?= Html::a('8 (916) 721-84-85', 'tel:79167218485', ['class'=>'telephone']) ?>
                     <span class='time'>Время работы ПН-ПТ с <b>08:00</b> до <b>19:00</b></span>
                     <span class='weekends'>СБ-ВС выходной</span>
+                    <span class='weekends'>Круглогодичный режим работы</span>
                 </div>
                 <div class='item social'>
                     <?= Html::a(Html::img('@img/inst-white.png', ['alt'=>'Ссылка на социальную сеть Инстаграм', 'title'=>'Ссылка на социальную сеть инстаграм']), 'https://www.instagram.com/kuvshinkaclub/', ['target'=>'_blank']); ?>

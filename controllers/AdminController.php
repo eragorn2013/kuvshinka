@@ -202,7 +202,7 @@ class AdminController extends Controller
             $order->phone=Html::encode($order->phone);
             $order->email=Html::encode($order->email);
             $order->city=Html::encode($order->city);
-            $order->age=(int)$order->age;
+            $order->age=Html::encode($order->age);
             $order->comment=Html::encode($order->comment);
             $order->date=date('Y-m-d');
             $order->time=date('H:i:s');

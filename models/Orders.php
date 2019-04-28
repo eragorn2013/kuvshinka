@@ -12,7 +12,7 @@ use Yii;
  * @property string $phone
  * @property string $email
  * @property string $city
- * @property int $age
+ * @property string $age
  * @property string $comment
  * @property string $date
  * @property string $time
@@ -36,9 +36,8 @@ class Orders extends \yii\db\ActiveRecord
      */
     public function rules()
     {
-        return [
-            [['age'], 'integer'],
-            [['comment'], 'string'],
+        return [            
+            [['comment', 'age'], 'string'],
             [['date', 'time'], 'safe'],
             [['name', 'email', 'city'], 'string', 'max' => 256],
             [['phone'], 'string', 'max' => 50],

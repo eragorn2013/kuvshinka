@@ -24,7 +24,7 @@
 					<?= $form->field($order, 'phone')->textInput(['placeholder'=>'Номер телефона'])->label(''); ?>
 					<?= $form->field($order, 'email')->textInput(['placeholder'=>'E-mail'])->label(''); ?>
 					<?= $form->field($order, 'city')->textInput(['placeholder'=>'Ваш населенный пункт'])->label(''); ?>
-					<?= $form->field($order, 'age')->textInput(['placeholder'=>'Возраст ребенка'])->label(''); ?>
+					<?= $form->field($order, 'age')->textInput(['placeholder'=>'Имя и возраст ребенка'])->label(''); ?>
 					<?= $form->field($order, 'comment')->textarea(['placeholder'=>'Комментарий'])->label(''); ?>
 					<?= $form->field($order, 'reCaptcha')->widget(\himiklab\yii2\recaptcha\ReCaptcha::className())->label('') ?>
 					<?= Html::submitButton('Отправить'); ?>
@@ -32,13 +32,13 @@
 			</div>
 
 			<div class='item text'>
-				<p>Домашний детский клуб "Кувшинка" в Алабино</p>
+				<p><b>Домашний</b> детский клуб "Кувшинка" в Алабино</p>
 				<p>Московская область, Наро-фоминский район, дер. Алабино, ул. Санаторная, дом 37 (Киевской шоссе)</p>
 				<p>тел. <span class='bold'>+7 916 721 84 85</span></p>
 				<p>detsad.kuvshinka@gmail.com</p>
 				<p><?= Html::a('vk.com/kuvshinkaclub', 'https://vk.com/kuvshinkaclub', ['target'=>'_blank']); ?></p>
 				<p><?= Html::a('@kuvshinkaclub', 'https://www.instagram.com/kuvshinkaclub/', ['target'=>'_blank']); ?></p>
-				<p>В целях безопасности детей экскурсии для родителей по детскому саду проводятся по заранее согласованной договоренности с руководителем</p>
+				<p><b>В целях безопасности</b> детей экскурсии для родителей по детскому саду проводятся по заранее согласованной договоренности с руководителем</p>
 			</div>
 
 		</div>
