@@ -81,10 +81,14 @@
 							<?= $form->field($item, 'content')->textarea(['class'=>'content-news', 'placeholder'=>'Текст новости', 'title'=>'Текст новости'])->label(''); ?>
 							<?= $form->field($item, 'date')->textInput(['placeholder'=>'Дата добавления', 'title'=>'Дата добавления'])->label(''); ?>
 							<?php
-								if($item->active) $checked=true;
-								else $checked=false;								
+								if($item->active) $checkedActive=true;
+								else $checkedActive=false;		
+
+								if($item->fixed) $checkedFixed=true;
+								else $checkedFixed=false;							
 							?>
-							<?= $form->field($item, 'active')->checkbox(['checked '=>$checked]); ?>
+							<?= $form->field($item, 'active')->checkbox(['checked '=>$checkedActive]); ?>
+							<?= $form->field($item, 'fixed')->checkbox(['checked '=>$checkedFixed]); ?>
 							<?= Html::submitButton('Сохранить'); ?>
 						</div>
 						

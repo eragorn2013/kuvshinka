@@ -2,6 +2,7 @@
 	use yii\helpers\Html;
 	use yii\helpers\Url;
 	use app\components\SeoData;
+	use yii\widgets\ActiveForm;
 
 	$this->title=$seoData->title;
     $this->registerMetaTag(['name' => 'description', 'content' => $seoData->description]); 
@@ -19,6 +20,14 @@
 			<p>И наконец, у нас вкусно кормят. Мы не заказываем питание ни у одного из подрядчиков, не покупаем никаких полуфабрикатов, а абсолютно все питание готовим на собственной кухне и сами контролируем качество продуктов питания.</p>
 			<p>Вливайтесь и Вы в нашу семью!</p>
 			<p>С любовью, хозяева Кувшинки</p>
+			<?= Html::a('Написать управляющему', '#', ['id'=>'openform']); ?>
+			<?php $about=ActiveForm::begin(['action'=>'/admin/send-order/about']); ?>
+				<?= $about->field($formAbout, 'name')->textInput(['placeholder'=>'Имя'])->label(''); ?> 
+				<?= $about->field($formAbout, 'phone')->textInput(['placeholder'=>'Контактый телефон', 'id'=>'phone_about'])->label(''); ?> 
+				<?= $about->field($formAbout, 'comment')->textarea(['placeholder'=>'Текст'])->label(''); ?>
+				<?= $about->field($formAbout, 'reCaptcha')->widget(\himiklab\yii2\recaptcha\ReCaptcha::className())->label('') ?>
+				<?= Html::submitButton('Отправить'); ?>
+			<?php ActiveForm::end(); ?>
 		</div>
 	</div>
 </section>

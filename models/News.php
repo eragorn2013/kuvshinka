@@ -15,6 +15,7 @@ use app\models\Images;
  * @property string $preview
  * @property string $date
  * @property int $active
+ * @property int $fixed
  */
 class News extends \yii\db\ActiveRecord
 {
@@ -34,7 +35,7 @@ class News extends \yii\db\ActiveRecord
         return [
             [['head', 'content', 'preview'], 'string'],
             [['date'], 'safe'],
-            [['active'], 'integer'],
+            [['active', 'fixed'], 'integer'],
             [['img'], 'string', 'max' => 256],
             ['img', 'file', 'extensions' => ['jpg'], 'message'=>'Допустимые расширения: jpg']
         ];
@@ -53,6 +54,7 @@ class News extends \yii\db\ActiveRecord
             'preview' => 'Preview',
             'date' => 'Date',
             'active' => 'Опубликовать',
+            'fixed' => 'Зафиксировать',
         ];
     }
 

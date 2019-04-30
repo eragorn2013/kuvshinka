@@ -41,7 +41,7 @@ $(document).ready(function(){
         }
     });
 
-    $("#orders-phone").mask("+7(000)000-00-00", {
+    $("#orders-phone, #phone_about").mask("+7(000)000-00-00", {
         placeholder: "Номер телефона",
         clearIfNotMatch: true
     });    
@@ -59,6 +59,11 @@ $(document).ready(function(){
     });
     $('#modal-form, #modal-form .close-modal').on('click', function(e){
       $('#modal-form').stop().fadeToggle(200);
+    });
+
+    $('#openform').on('click', function(){
+      $(this).next('form').stop().slideToggle();
+      return false;
     });
 
 });

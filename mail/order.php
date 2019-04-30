@@ -1,6 +1,6 @@
 <section id='order'>
 	<div class='container'>
-		<h1 style='background: #80166f; text-transform: uppercase; color: #fefefe; padding: 20px; margin: 0'>Новый заказ обратного звонка с сайта</h1>
+		<h1 style='background: #80166f; text-transform: uppercase; color: #fefefe; padding: 20px; margin: 0'><?= $head ?></h1>
 		<div style='
 			background-color: #f9f9f9; 
 			padding: 20px; 

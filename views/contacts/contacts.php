@@ -19,7 +19,7 @@
 
 			<div class='item form'>
 				<?php $form=ActiveForm::begin(['action'=>'/admin/send-order']); ?>
-					<?= Html::tag('h3', 'Запись в детский сад'); ?>
+					<?= Html::tag('h3', 'Запись в детский клуб'); ?>
 					<?= $form->field($order, 'name')->textInput(['placeholder'=>'Имя родителя'])->label(''); ?>
 					<?= $form->field($order, 'phone')->textInput(['placeholder'=>'Номер телефона'])->label(''); ?>
 					<?= $form->field($order, 'email')->textInput(['placeholder'=>'E-mail'])->label(''); ?>

@@ -55,26 +55,89 @@
     <div class='container'>
         <div class='content'>
 
-            <?php foreach($news as $item): ?>
+            <?php if($fixedNews): ?>
+
                 <div class='item'>                    
                     <div class='img'>
-                        <?php if($item->img): ?>
-                            <?= Html::img('@img/news/'.$item->img, ['alt'=>$item->head, 'title'=>$item->head]); ?>
+                        <?php if($news[0]->img): ?>
+                            <?= Html::img('@img/news/'.$news[0]->img, ['alt'=>$news[0]->head, 'title'=>$news[0]->head]); ?>
                         <?php else: ?>
-                            <?= Html::img('@img/noimg.jpg', ['alt'=>$item->head, 'title'=>$item->head]); ?>
+                            <?= Html::img('@img/noimg.jpg', ['alt'=>$news[0]->head, 'title'=>$news[0]->head]); ?>
                         <?php endif; ?>
                     </div>
                     <div class='head'>
-                        <?= Html::a(mb_strimwidth($item->head, 0, 41, '...'), '/news/'.$item->id); ?>
+                        <?= Html::a(mb_strimwidth($news[0]->head, 0, 41, '...'), '/news/'.$news[0]->id); ?>
                     </div>
                     <div class='preview'>
-                        <?= $item->preview ?>
+                        <?= $news[0]->preview ?>
                     </div>
                     <div class='date'>
-                        <?= Yii::$app->formatter->asDate($item->date); ?>
+                        <?= Yii::$app->formatter->asDate($news[0]->date); ?>
                     </div>
                 </div>
-            <?php endforeach; ?>       
+
+                <div class='item'>                    
+                    <div class='img'>
+                        <?php if($fixedNews->img): ?>
+                            <?= Html::img('@img/news/'.$fixedNews->img, ['alt'=>$fixedNews->head, 'title'=>$fixedNews->head]); ?>
+                        <?php else: ?>
+                            <?= Html::img('@img/noimg.jpg', ['alt'=>$fixedNews->head, 'title'=>$fixedNews->head]); ?>
+                        <?php endif; ?>
+                    </div>
+                    <div class='head'>
+                        <?= Html::a(mb_strimwidth($fixedNews->head, 0, 41, '...'), '/news/'.$fixedNews->id); ?>
+                    </div>
+                    <div class='preview'>
+                        <?= $fixedNews->preview ?>
+                    </div>
+                    <div class='date'>
+                        <?= Yii::$app->formatter->asDate($fixedNews->date); ?>
+                    </div>
+                </div>
+
+                <div class='item'>                    
+                    <div class='img'>
+                        <?php if($news[1]->img): ?>
+                            <?= Html::img('@img/news/'.$news[1]->img, ['alt'=>$news[1]->head, 'title'=>$news[1]->head]); ?>
+                        <?php else: ?>
+                            <?= Html::img('@img/noimg.jpg', ['alt'=>$news[1]->head, 'title'=>$news[1]->head]); ?>
+                        <?php endif; ?>
+                    </div>
+                    <div class='head'>
+                        <?= Html::a(mb_strimwidth($news[1]->head, 0, 41, '...'), '/news/'.$news[1]->id); ?>
+                    </div>
+                    <div class='preview'>
+                        <?= $news[1]->preview ?>
+                    </div>
+                    <div class='date'>
+                        <?= Yii::$app->formatter->asDate($news[1]->date); ?>
+                    </div>
+                </div>
+
+            <?php else: ?>
+                <?php foreach($news as $item): ?>
+                    <div class='item'>                    
+                        <div class='img'>
+                            <?php if($item->img): ?>
+                                <?= Html::img('@img/news/'.$item->img, ['alt'=>$item->head, 'title'=>$item->head]); ?>
+                            <?php else: ?>
+                                <?= Html::img('@img/noimg.jpg', ['alt'=>$item->head, 'title'=>$item->head]); ?>
+                            <?php endif; ?>
+                        </div>
+                        <div class='head'>
+                            <?= Html::a(mb_strimwidth($item->head, 0, 41, '...'), '/news/'.$item->id); ?>
+                        </div>
+                        <div class='preview'>
+                            <?= $item->preview ?>
+                        </div>
+                        <div class='date'>
+                            <?= Yii::$app->formatter->asDate($item->date); ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>   
+            <?php endif; ?>
+
+                
         </div>
     </div>
 </section>

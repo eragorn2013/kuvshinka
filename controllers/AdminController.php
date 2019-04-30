@@ -39,6 +39,7 @@ class AdminController extends Controller
         $news->preview='Превью новости';
         $news->date=date('Y-m-d');
         $news->active=0;
+        $news->fixed=0;
         $news->save();
 
         return Yii::$app->response->redirect(['/news']); 
@@ -86,7 +87,17 @@ class AdminController extends Controller
                 $news->img->saveAs($path.$id.'-'.md5($news->img->name).'.jpg'); 
                 $news->img=$id.'-'.md5($news->img->name).'.jpg';                       
             }
-            else $news->img=$oldImg;           
+            else $news->img=$oldImg;
+
+            if($news->fixed==1){
+                $allNews=News::find()->all();
+                if($allNews){
+                    foreach($allNews as $item){
+                        $item->fixed=0;
+                        $item->update();
+                    }
+                }
+            }
             $news->update();            
         }
         return Yii::$app->response->redirect(['/news']);
@@ -208,7 +219,7 @@ class AdminController extends Controller
             $order->time=date('H:i:s');
             $order->save(); 
 
-            Yii::$app->mailer->compose('order', ['id'=>$order->id,'name'=>$order->name, 'phone'=>$order->phone, 'email'=>$order->email, 'city'=>$order->city, 'age'=>$order->age, 'comment'=>$order->comment])
+            Yii::$app->mailer->compose('order', ['id'=>$order->id,'name'=>$order->name, 'phone'=>$order->phone, 'email'=>$order->email, 'city'=>$order->city, 'age'=>$order->age, 'comment'=>$order->comment, 'head'=>'Новый заказ обратного звонка с сайта'])
                 ->setFrom(['kuvshinkaclubsite@gmail.com'=>'KUVSHINKACLUB'])
                 ->setTo('eragorn2013@yandex.ru')
                 ->setSubject('Заказ обратного звонка')
@@ -230,10 +241,32 @@ class AdminController extends Controller
             $order->time=date('H:i:s');
             $order->save(); 
 
-            Yii::$app->mailer->compose('order', ['id'=>$order->id,'name'=>$order->name, 'phone'=>$order->phone, 'email'=>$order->email])
+            Yii::$app->mailer->compose('order', ['id'=>$order->id,'name'=>$order->name, 'phone'=>$order->phone, 'email'=>$order->email, 'head'=>'Новый заказ обратного звонка с сайта'])
                 ->setFrom(['kuvshinkaclubsite@gmail.com'=>'KUVSHINKACLUB'])
                 ->setTo('eragorn2013@yandex.ru')
                 ->setSubject('Заказ обратного звонка')
+                ->send();
+
+            Yii::$app->session->setFlash('message','Мы приняли вашу заявку. Ожидайте звонка.');           
+        }
+        return Yii::$app->response->redirect(['/contacts']);
+    }
+
+    public function actionSendOrderAbout(){
+        $order=new Orders(['scenario'=>Orders::SCENARIO_ABOUTUS]);
+
+        if($order->load(Yii::$app->request->post()) && $order->validate()){
+            $order->name=Html::encode($order->name);
+            $order->phone=Html::encode($order->phone);
+            $order->comment=Html::encode($order->comment);            
+            $order->date=date('Y-m-d');
+            $order->time=date('H:i:s');
+            $order->save(); 
+
+            Yii::$app->mailer->compose('order', ['id'=>$order->id,'name'=>$order->name, 'phone'=>$order->phone, 'comment'=>$order->comment, 'head'=>'Письмо управляющему'])
+                ->setFrom(['kuvshinkaclubsite@gmail.com'=>'KUVSHINKACLUB'])
+                ->setTo('eragorn2013@yandex.ru')
+                ->setSubject('Письмо управляющему')
                 ->send();
 
             Yii::$app->session->setFlash('message','Мы приняли вашу заявку. Ожидайте звонка.');           

@@ -24,6 +24,7 @@ class Orders extends \yii\db\ActiveRecord
      */
     const SCENARIO_CONTACTS = 'contacts';
     const SCENARIO_POPUP = 'popup';
+    const SCENARIO_ABOUTUS = 'aboutus';
 
     public $reCaptcha;
     public static function tableName()
@@ -34,15 +35,17 @@ class Orders extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function rules()
+    public function rules()             //'except' => self::SCENARIO_DEFAULT
     {
         return [            
             [['comment', 'age'], 'string'],
+            [['comment'], 'required', 'message'=>'Поле не может быть пустым', 'on' => self::SCENARIO_ABOUTUS],             
             [['date', 'time'], 'safe'],
             [['name', 'email', 'city'], 'string', 'max' => 256],
             [['phone'], 'string', 'max' => 50],
             [['email'], 'email', 'message'=>'Введите корректный email'],
-            [['name', 'phone', 'age', 'city'], 'required', 'message'=>'Поле не может быть пустым'],
+            [['name', 'age', 'city'], 'required', 'message'=>'Поле не может быть пустым'],
+            [['phone'], 'required', 'message'=>'Поле не может быть пустым', 'except' => self::SCENARIO_ABOUTUS],
             [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator::className(), 'secret' => '6Lfc6Z8UAAAAAElZT7mFgmuRC8UNjL6a8fwqRu-i', 'uncheckedMessage' => 'Пожалуйста, пройдите проверку, что вы не робот'],
         ];
     }
@@ -52,6 +55,7 @@ class Orders extends \yii\db\ActiveRecord
         return [
             self::SCENARIO_CONTACTS => ['name', 'phone', 'email', 'city', 'age', 'comment', 'date', 'time','reCaptcha'],
             self::SCENARIO_POPUP => ['name', 'phone', 'email', 'date', 'time','reCaptcha'],            
+            self::SCENARIO_ABOUTUS => ['name', 'phone', 'comment', 'date', 'time','reCaptcha'],      
         ];
     } 
 
